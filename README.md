@@ -16,7 +16,6 @@
 ```
 go build -o myHTTP main.go
 ./myHTTP -limit=7 www.adjust.com http://google.com http://facebook.com http://yahoo.com http://yandex.com http://twitter.com http://reddit.com/r/funny http://reddit.com/r/notfunny http://baroquemusiclibrary.com http://wikipedia.com http://nokia.com http://hotstar.com 
-
 http://hotstar.com f8a60819ad0cc5407215139cce1cb4b3
 http://google.com a1288f669010bd33c580da80a2fcedbc
 http://reddit.com/r/notfunny 7564d1b6c4b125c8d73764e24a3e778e
