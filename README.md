@@ -10,7 +10,7 @@
   - timeout:- This is an extra flag provided to set the timeout value for http requests in seconds.
     - Usage:- timeout=5
     - Default value=10
-  - The logs of the tool are maintained in myHTTP.log file.
+- The logs of the tool are maintained in myHTTP.log file.
     
 #### Example
 ```
