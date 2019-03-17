@@ -1,5 +1,5 @@
 # myHTTP
-###The coding test repository for Adjust
+### The coding test repository for Adjust
 
 - The tool prints md5sum of the response of an HTTP request of a URL. It takes the entire response object and calculates its md5sum value
 - The list of URLs are passed as command-line arguments to the tool.
