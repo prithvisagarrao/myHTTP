@@ -23,7 +23,8 @@ func main() {
 
 	defer file.Close()
 	log.SetOutput(file)
-	log.Printf("myHTTP start -- %v", time.Now())
+	startTime := time.Now()
+	log.Printf("myHTTP start -- %v", startTime.Format("2006-01-02 15:04:05" ))
 
 	limit := flag.Int("limit", 10, "limit value for number of parallel requests")
 	timeoutInt := flag.Int("timeout", 10, "timeout value for http requests")
@@ -57,6 +58,9 @@ func main() {
 	}
 
 	wg.Wait()
+	endTime := time.Now()
+	log.Printf("myHTTP end -- %v", endTime.Format("2006-01-02 15:04:05" ))
+
 }
 
 func makeRequest(urlStr string, wg *sync.WaitGroup, semaphore *chan struct{}, client http.Client) {
@@ -75,21 +79,21 @@ func makeRequest(urlStr string, wg *sync.WaitGroup, semaphore *chan struct{}, cl
 		log.Printf("ERROR: %v\n", err.Error())
 
 	} else {
-		h := md5.New()
-		err := resp.Write(h)
+		hash := md5.New()
+		err := resp.Write(hash)
 		if err != nil {
 			log.Printf("ERROR: %v\n", err.Error())
 			return
 		}
 
-		fmt.Printf("%v %x\n", urlStr, h.Sum(nil))
+		fmt.Printf("%v %x\n", urlStr, hash.Sum(nil))
 	}
 }
 
 func checkURLs(urls []string) (retURLList []string) {
-	for _, v := range urls {
+	for _, val := range urls {
 
-		urlParsed, err := url.Parse(v)
+		urlParsed, err := url.Parse(val)
 
 		if err != nil {
 			log.Printf("ERROR: %v\n", err.Error())
@@ -97,10 +101,10 @@ func checkURLs(urls []string) (retURLList []string) {
 		}
 
 		if urlParsed.Scheme == ""{
-			v = "http://" + v
+			val = "http://" + val
 		}
 
-		retURLList = append(retURLList, v)
+		retURLList = append(retURLList, val)
 	}
 
 	return
