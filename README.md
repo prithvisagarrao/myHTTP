@@ -1,5 +1,5 @@
 # myHTTP
-
+### This is a tool to print the md5sum of HTTP responses of the given list of URL. 
 - The tool prints md5sum of the response of an HTTP request of a URL. It takes the entire response object and calculates its md5sum value
 - The list of URLs are passed as command-line arguments to the tool.
 - It makes asynchronous calls to the URLs and generates its md5sum to print the value along with its URL.
